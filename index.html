@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Joker Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #e5ddd5;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .character {
+      width: 150px;
+    }
+    .character img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .chat {
+      max-width: 400px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .message {
+      background: #dcf8c6;
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 7px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .message span {
+      flex-grow: 1;
+    }
+    .delete-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .joker-face {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: url('https://i.imgur.com/2ZCqZzU.png') center/cover no-repeat;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="character">
+    <img src="https://i.imgur.com/2ZCqZzU.png" alt="Feminine cartoon character" />
+  </div>
+
+  <div class="chat">
+    <div class="message">
+      <span>Hello Bhabhiji</span>
+      <button class="delete-btn" onclick="replaceWithJoker(this)">Delete</button>
+    </div>
+    <div class="message">
+      <span>Hello Bhabhiji</span>
+      <button class="delete-btn" onclick="replaceWithJoker(this)">Delete</button>
+    </div>
+  </div>
+
+  <script>
+    function replaceWithJoker(btn) {
+      const msg = btn.parentElement;
+      msg.innerHTML = '<div class="joker-face"></div>';
+    }
+  </script>
+</body>
+</html>
