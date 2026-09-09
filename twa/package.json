@@ -1,0 +1,14 @@
+{
+  "name": "examforge-twa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Trusted Web Activity wrapper for https://exams.learnwithchampak.live",
+  "scripts": {
+    "update": "bubblewrap update",
+    "build": "bubblewrap build",
+    "doctor": "bubblewrap doctor"
+  },
+  "devDependencies": {
+    "@bubblewrap/cli": "1.25.0"
+  }
+}
