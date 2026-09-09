@@ -85,7 +85,12 @@ jobs:
           test -n "$APK"
           mkdir -p downloads
           cp "$APK" downloads/ExamForge-debug.apk
-          keytool -list -v -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey | sed -n 's/^[[:space:]]*SHA256: /SHA256=/p' > downloads/debug-fingerprint.txt
+          APKSIGNER="$ANDROID_SDK_ROOT/build-tools/36.0.0/apksigner"
+          "$APKSIGNER" verify --print-certs downloads/ExamForge-debug.apk | tee downloads/apk-certificates.txt
+          DIGEST="$("$APKSIGNER" verify --print-certs downloads/ExamForge-debug.apk | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -n 1)"
+          test -n "$DIGEST"
+          FORMATTED="$(echo "$DIGEST" | tr '[:lower:]' '[:upper:]' | sed 's/../&:/g;s/:$//')"
+          printf 'SHA256=%s\n' "$FORMATTED" > downloads/debug-fingerprint.txt
           printf 'Built from commit: %s\nBuilt at: %s\nPackage: live.learnwithchampak.exams\nOrigin: https://exams.learnwithchampak.live\n' "$GITHUB_SHA" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > downloads/build-info.txt
           cat downloads/debug-fingerprint.txt
           ls -lh downloads/ExamForge-debug.apk
@@ -98,6 +103,7 @@ jobs:
             downloads/ExamForge-debug.apk
             downloads/debug-fingerprint.txt
             downloads/build-info.txt
+            downloads/apk-certificates.txt
           if-no-files-found: error
           retention-days: 30
 
@@ -107,6 +113,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add downloads/ExamForge-debug.apk downloads/debug-fingerprint.txt downloads/build-info.txt
+          git add downloads/ExamForge-debug.apk downloads/debug-fingerprint.txt downloads/build-info.txt downloads/apk-certificates.txt
           git commit -m 'Publish ExamForge debug APK [skip ci]' || exit 0
           git push
