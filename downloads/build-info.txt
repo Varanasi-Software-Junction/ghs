@@ -1,0 +1,4 @@
+Built from commit: 7d8f303bf87e318966e1fbdcd8ff721a7d66a983
+Built at: 2026-09-09T13:33:36Z
+Package: live.learnwithchampak.exams
+Origin: https://exams.learnwithchampak.live
