@@ -10,6 +10,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="test.css?v=5" />
+  <link rel="stylesheet" href="exam-clock.css?v=6" />
 </head>
 <body>
   <header class="topbar">
@@ -28,6 +29,34 @@
     </nav>
     <button class="install-btn" id="installBtn" hidden>Install App</button>
   </header>
+
+  <section class="exam-clock-strip" id="examClockStrip" aria-label="Exam date and countdown">
+    <div class="exam-clock-item">
+      <span>Current time</span>
+      <strong id="examCurrentTime">--:--:--</strong>
+      <small id="examCurrentDate">Loading date…</small>
+    </div>
+    <div class="exam-clock-item exam-date-display">
+      <span>Exam date &amp; time</span>
+      <strong id="examDateDisplay">Not set</strong>
+      <small id="examDateHint">Set your exam date</small>
+    </div>
+    <div class="exam-clock-item countdown-display">
+      <span>Countdown</span>
+      <strong id="examCountdown">--d --:--:--</strong>
+      <small id="examCountdownHint">Waiting for exam date</small>
+    </div>
+    <button class="exam-clock-edit" id="examEditBtn" type="button" aria-expanded="false">Set exam</button>
+    <div class="exam-clock-editor" id="examClockEditor" hidden>
+      <label for="examDateTimeInput">Exam date and time</label>
+      <input id="examDateTimeInput" type="datetime-local" />
+      <div class="exam-clock-editor-actions">
+        <button class="btn primary" id="examSaveBtn" type="button">Save</button>
+        <button class="btn secondary" id="examClearBtn" type="button">Clear</button>
+        <button class="btn secondary" id="examCancelBtn" type="button">Close</button>
+      </div>
+    </div>
+  </section>
 
   <main>
     <section id="home" class="page active">
@@ -199,5 +228,6 @@
 
   <script src="app.js?v=5"></script>
   <script src="test-engine.js?v=5"></script>
+  <script src="exam-clock.js?v=6"></script>
 </body>
 </html>
