@@ -1,0 +1,13 @@
+{
+  "name": "ExamForge - Learn With Champak",
+  "short_name": "ExamForge",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#0f3d75",
+  "description": "Old question papers, question bank, practice and paper generator sample portal.",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
