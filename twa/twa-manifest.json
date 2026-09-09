@@ -1,0 +1,41 @@
+{
+  "packageId": "live.learnwithchampak.exams",
+  "host": "exams.learnwithchampak.live",
+  "name": "ExamForge",
+  "launcherName": "ExamForge",
+  "display": "standalone",
+  "themeColor": "#0f3d75",
+  "themeColorDark": "#0f3d75",
+  "navigationColor": "#ffffff",
+  "navigationColorDark": "#0f172a",
+  "navigationDividerColor": "#d9e2ec",
+  "navigationDividerColorDark": "#334155",
+  "backgroundColor": "#f5f8fc",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://exams.learnwithchampak.live/examforge/icon.svg",
+  "maskableIconUrl": "https://exams.learnwithchampak.live/examforge/icon.svg",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./examforge-release.keystore",
+    "alias": "examforge"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://exams.learnwithchampak.live/examforge/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "minSdkVersion": 21,
+  "orientation": "default",
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1.0.0"
+}
