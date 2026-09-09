@@ -7,6 +7,7 @@
       "namespace": "android_app",
       "package_name": "live.learnwithchampak.exams",
       "sha256_cert_fingerprints": [
+        "F7:0C:AF:14:86:CC:E9:0C:5A:3F:0F:4B:94:D9:1C:0F:F5:C4:34:C7:AC:12:59:7D:EB:D9:FC:43:44:6E:89:14",
         "7B:2C:5A:89:CD:63:35:2C:71:3F:DE:2E:F6:59:91:6B:A8:4F:8B:88:CA:4B:4F:10:E1:25:84:A9:D4:25:2E:20",
         "REPLACE_WITH_RELEASE_OR_PLAY_APP_SIGNING_SHA256"
       ]
