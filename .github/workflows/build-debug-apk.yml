@@ -47,9 +47,22 @@ jobs:
         working-directory: twa
         run: npm install --no-audit --no-fund
 
-      - name: Configure Bubblewrap
-        working-directory: twa
-        run: npx bubblewrap updateConfig --jdkPath="$JAVA_HOME" --androidSdkPath="$ANDROID_SDK_ROOT"
+      - name: Configure Bubblewrap non-interactively
+        shell: bash
+        run: |
+          mkdir -p "$HOME/.bubblewrap"
+          python3 - <<'PY'
+          import json, os
+          cfg = {
+              "jdkPath": os.environ["JAVA_HOME"],
+              "androidSdkPath": os.environ["ANDROID_SDK_ROOT"]
+          }
+          with open(os.path.expanduser("~/.bubblewrap/config.json"), "w", encoding="utf-8") as f:
+              json.dump(cfg, f)
+          PY
+          cat "$HOME/.bubblewrap/config.json"
+          cd twa
+          npx bubblewrap doctor
 
       - name: Generate Android TWA project
         shell: bash
