@@ -1,4 +1,11 @@
+
 /* ExamForge MCQ test engine and local activity additions */
+
+.test-mode-buttons{display:grid;grid-template-columns:1fr;gap:8px}
+.test-mode-btn{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;background:#fff;color:var(--navy);font-weight:750;text-align:left;cursor:pointer}
+.test-mode-btn:hover{background:#f6fbff;border-color:#9fc5e8}
+.test-mode-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 5px 14px rgba(15,61,117,.18)}
+
 .practice-side input{
   width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;background:#fff;margin-top:6px
 }
