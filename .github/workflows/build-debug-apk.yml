@@ -6,6 +6,10 @@ on:
     paths:
       - 'twa/**'
       - '.github/workflows/build-debug-apk.yml'
+  pull_request:
+    paths:
+      - 'twa/**'
+      - '.github/workflows/build-debug-apk.yml'
 
 permissions:
   contents: write
@@ -84,7 +88,8 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Commit downloadable APK
+      - name: Commit downloadable APK on push builds
+        if: github.event_name == 'push'
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
