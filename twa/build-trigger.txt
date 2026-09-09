@@ -2,3 +2,4 @@ Build requested for ExamForge debug TWA APK.
 Origin: https://exams.learnwithchampak.live
 Package: live.learnwithchampak.exams
 Mode: pull-request artifact build
+Retry: non-interactive Bubblewrap configuration
