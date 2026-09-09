@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f3d75" />
-  <meta name="description" content="ExamForge sample exam portal by Learn With Champak: old question papers, practice, question bank and paper generation." />
+  <meta name="description" content="ExamForge sample exam portal by Learn With Champak: old question papers, MCQ tests, practice, question bank and paper generation." />
   <title>ExamForge | Learn With Champak</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="test.css" />
 </head>
 <body>
   <header class="topbar">
@@ -18,12 +19,7 @@
     </a>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
     <nav id="mainNav" class="main-nav" aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#papers">Papers</a>
-      <a href="#questions">Questions</a>
-      <a href="#practice">Practice</a>
-      <a href="#create">Create</a>
-      <a href="#dashboard">Dashboard</a>
+      <a href="#home">Home</a><a href="#papers">Papers</a><a href="#questions">Questions</a><a href="#practice">Practice</a><a href="#create">Create</a><a href="#dashboard">Dashboard</a>
     </nav>
     <button class="install-btn" id="installBtn" hidden>Install App</button>
   </header>
@@ -34,71 +30,55 @@
         <div>
           <span class="eyebrow">QUESTION PAPER LABORATORY</span>
           <h1>Old papers become practice, tests and new papers.</h1>
-          <p>Search an archive, extract useful questions, practise by topic, remix old papers and generate balanced new examination papers.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#papers">Browse Old Papers</a>
-            <a class="btn secondary" href="#create">Create a Paper</a>
-          </div>
+          <p>Search an archive, extract useful questions, practise by topic, run timed or untimed MCQ tests, and generate balanced new examination papers.</p>
+          <div class="hero-actions"><a class="btn primary" href="#papers">Browse Old Papers</a><a class="btn secondary" href="#practice">Start MCQ Test</a><a class="btn secondary" href="#create">Create a Paper</a></div>
         </div>
         <div class="hero-card">
-          <div class="hero-stat"><strong>248</strong><span>Sample papers</span></div>
-          <div class="hero-stat"><strong>3,840</strong><span>Questions</span></div>
-          <div class="hero-stat"><strong>18</strong><span>Subjects</span></div>
-          <div class="hero-stat"><strong>6</strong><span>Paper tools</span></div>
+          <div class="hero-stat"><strong>248</strong><span>Sample papers</span></div><div class="hero-stat"><strong>3,840</strong><span>Questions</span></div><div class="hero-stat"><strong>3</strong><span>Test modes</span></div><div class="hero-stat"><strong>Local</strong><span>Saved activity</span></div>
         </div>
       </div>
-
       <div class="search-panel">
         <label for="globalSearch">Find a paper or question</label>
-        <div class="search-row">
-          <input id="globalSearch" placeholder="Try: DSA linked list 2025 or Class 10 Mathematics" />
-          <button class="btn primary" id="globalSearchBtn">Search</button>
-        </div>
-        <div class="quick-tags">
-          <button data-search="DSA">DSA</button><button data-search="Mathematics">Mathematics</button><button data-search="Python">Python</button><button data-search="SQL">SQL</button>
-        </div>
+        <div class="search-row"><input id="globalSearch" placeholder="Try: DSA linked list 2025 or Class 10 Mathematics" /><button class="btn primary" id="globalSearchBtn">Search</button></div>
+        <div class="quick-tags"><button data-search="DSA">DSA</button><button data-search="Mathematics">Mathematics</button><button data-search="Python">Python</button><button data-search="SQL">SQL</button></div>
       </div>
-
       <div class="feature-grid">
         <article class="feature-card"><span>01</span><h3>Old Papers</h3><p>Browse previous papers by exam, year, subject and difficulty.</p><a href="#papers">Open archive →</a></article>
         <article class="feature-card"><span>02</span><h3>Question Bank</h3><p>Reuse individual questions with source, topic, marks and difficulty.</p><a href="#questions">Explore questions →</a></article>
-        <article class="feature-card"><span>03</span><h3>Practice</h3><p>Attempt questions with hints, explanations and instant scoring.</p><a href="#practice">Start practice →</a></article>
+        <article class="feature-card"><span>03</span><h3>MCQ Tests</h3><p>Choose untimed, timed per question, or timed for the complete test.</p><a href="#practice">Start a test →</a></article>
         <article class="feature-card"><span>04</span><h3>Paper Generator</h3><p>Create a balanced paper from topics, marks and difficulty.</p><a href="#create">Build paper →</a></article>
-        <article class="feature-card"><span>05</span><h3>Mock Exam</h3><p>Turn any paper into a timed examination experience.</p><button class="link-btn" data-demo="mock">Preview mock →</button></article>
-        <article class="feature-card"><span>06</span><h3>Analysis</h3><p>See topic distribution, weak areas and question trends.</p><a href="#dashboard">View dashboard →</a></article>
+        <article class="feature-card"><span>05</span><h3>Saved Progress</h3><p>Scores and test activity stay in local storage on this device.</p><a href="#dashboard">View activity →</a></article>
+        <article class="feature-card"><span>06</span><h3>Backup & Restore</h3><p>Download activity as JSON and upload it on this or another device.</p><a href="#dashboard">Manage data →</a></article>
       </div>
-
-      <div class="section-head"><div><span class="eyebrow">RECENT</span><h2>Recently added papers</h2></div><a href="#papers">View all</a></div>
-      <div id="recentPapers" class="paper-grid"></div>
+      <div class="section-head"><div><span class="eyebrow">RECENT</span><h2>Recently added papers</h2></div><a href="#papers">View all</a></div><div id="recentPapers" class="paper-grid"></div>
     </section>
 
     <section id="papers" class="page">
       <div class="page-title"><div><span class="eyebrow">ARCHIVE</span><h1>Old Question Papers</h1><p>Use filters to find, analyse, practise or remix a paper.</p></div><button class="btn secondary" id="uploadDemo">Upload Paper</button></div>
-      <div class="toolbar">
-        <input id="paperSearch" placeholder="Search title, subject, exam or year" />
-        <select id="subjectFilter"><option value="">All subjects</option></select>
-        <select id="yearFilter"><option value="">All years</option></select>
-      </div>
-      <div id="paperList" class="paper-grid"></div>
+      <div class="toolbar"><input id="paperSearch" placeholder="Search title, subject, exam or year" /><select id="subjectFilter"><option value="">All subjects</option></select><select id="yearFilter"><option value="">All years</option></select></div><div id="paperList" class="paper-grid"></div>
     </section>
 
     <section id="questions" class="page">
       <div class="page-title"><div><span class="eyebrow">QUESTION BANK</span><h1>Reusable Questions</h1><p>Every question retains its topic, marks, difficulty and source paper.</p></div><span class="pill">Demo bank</span></div>
-      <div class="toolbar">
-        <input id="questionSearch" placeholder="Search a topic or question" />
-        <select id="difficultyFilter"><option value="">All difficulty</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
-      </div>
+      <div class="toolbar"><input id="questionSearch" placeholder="Search a topic or question" /><select id="difficultyFilter"><option value="">All difficulty</option><option>Easy</option><option>Medium</option><option>Hard</option></select></div>
       <div id="questionList" class="question-list"></div>
+      <div class="section-head"><div><span class="eyebrow">MCQ BANK</span><h2>Multiple-choice questions</h2></div><a href="#practice">Use in a test</a></div><div id="mcqBank" class="question-list"></div>
     </section>
 
     <section id="practice" class="page">
-      <div class="page-title"><div><span class="eyebrow">PRACTICE MODE</span><h1>Practise by topic</h1><p>Short, focused practice with hints and immediate explanations.</p></div></div>
+      <div class="page-title"><div><span class="eyebrow">MCQ TEST ENGINE</span><h1>Practice & Tests</h1><p>Use the same MCQ bank in three modes: untimed, per-question timer, or whole-test timer.</p></div><span class="pill" id="saveStatus">Saved locally</span></div>
       <div class="practice-layout">
         <aside class="practice-side">
           <label>Subject</label><select id="practiceSubject"></select>
           <label>Difficulty</label><select id="practiceDifficulty"><option value="">Mixed</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
-          <button class="btn primary" id="newPractice">New Practice Set</button>
+          <label>Test mode</label><select id="testMode"><option value="untimed">Untimed</option><option value="question">Timed per question</option><option value="test">Timed whole test</option></select>
+          <label id="questionSecondsLabel">Seconds per question<input id="questionSeconds" type="number" min="5" max="600" value="30" /></label>
+          <label id="testMinutesLabel">Minutes for test<input id="testMinutes" type="number" min="1" max="180" value="5" /></label>
+          <label>Questions<select id="testCount"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></label>
+          <button class="btn primary" id="newPractice">Start New Test</button>
+          <div class="timer-box" id="timerBox"><span id="timerLabel">Untimed</span><strong id="timerValue">—</strong></div>
           <div class="score-box"><span>Score</span><strong id="practiceScore">0 / 0</strong></div>
+          <div class="test-progress"><span id="questionProgress">Ready</span><progress id="testProgress" value="0" max="1"></progress></div>
         </aside>
         <div id="practiceCard" class="practice-card"></div>
       </div>
@@ -106,39 +86,19 @@
 
     <section id="create" class="page">
       <div class="page-title"><div><span class="eyebrow">PAPER BUILDER</span><h1>Create a New Question Paper</h1><p>Select a blueprint and ExamForge will assemble a balanced sample paper.</p></div></div>
-      <div class="builder-layout">
-        <form id="paperForm" class="builder-form">
-          <label>Paper title<input id="newTitle" value="Data Structures Practice Test" required /></label>
-          <label>Subject<select id="newSubject"></select></label>
-          <label>Total marks<select id="newMarks"><option>20</option><option selected>40</option><option>50</option><option>80</option></select></label>
-          <label>Difficulty<select id="newDifficulty"><option>Balanced</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
-          <label>Creation method<select id="newMethod"><option>Automatic from question bank</option><option>Remix old papers</option><option>Topic blueprint</option><option>Teacher selection</option></select></label>
-          <button class="btn primary" type="submit">Generate Sample Paper</button>
-        </form>
-        <div class="generated-paper" id="generatedPaper">
-          <div class="empty-state"><strong>No paper generated yet.</strong><p>Choose the settings and press Generate Sample Paper.</p></div>
-        </div>
-      </div>
+      <div class="builder-layout"><form id="paperForm" class="builder-form"><label>Paper title<input id="newTitle" value="Data Structures Practice Test" required /></label><label>Subject<select id="newSubject"></select></label><label>Total marks<select id="newMarks"><option>20</option><option selected>40</option><option>50</option><option>80</option></select></label><label>Difficulty<select id="newDifficulty"><option>Balanced</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label><label>Creation method<select id="newMethod"><option>Automatic from question bank</option><option>Remix old papers</option><option>Topic blueprint</option><option>Teacher selection</option></select></label><button class="btn primary" type="submit">Generate Sample Paper</button></form><div class="generated-paper" id="generatedPaper"><div class="empty-state"><strong>No paper generated yet.</strong><p>Choose the settings and press Generate Sample Paper.</p></div></div></div>
     </section>
 
     <section id="dashboard" class="page">
-      <div class="page-title"><div><span class="eyebrow">DASHBOARD</span><h1>Student & Teacher Snapshot</h1><p>One dashboard can adapt according to the user's role.</p></div><div class="segmented"><button class="active" data-role="student">Student</button><button data-role="teacher">Teacher</button></div></div>
+      <div class="page-title"><div><span class="eyebrow">DASHBOARD</span><h1>Saved Activity & Scores</h1><p>Your test activity is stored in this browser using local storage.</p></div><div class="segmented"><button class="active" data-role="student">Student</button><button data-role="teacher">Teacher</button></div></div>
+      <div class="data-panel"><div><h3>Local data backup</h3><p>Download your ExamForge activity and scores as JSON. Upload the same file later to restore or transfer your history.</p></div><div class="data-actions"><button class="btn secondary" id="downloadData">Download Activity</button><button class="btn primary" id="uploadData">Upload Activity</button><input id="activityFile" type="file" accept="application/json,.json" hidden /></div></div>
       <div id="dashboardContent"></div>
+      <div class="section-head"><div><span class="eyebrow">HISTORY</span><h2>Recent test attempts</h2></div><span id="historyCount" class="pill">0 attempts</span></div><div id="activityHistory" class="activity-history"></div>
     </section>
   </main>
 
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-panel">
-      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <footer>
-    <div><strong>ExamForge</strong><span>Sample concept by Learn With Champak</span></div>
-    <p>Demo data only. Designed for an old-paper archive, question bank, practice engine, paper generator and future TWA packaging.</p>
-  </footer>
-
-  <script src="app.js"></script>
+  <div class="modal" id="modal" aria-hidden="true"><div class="modal-panel"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div id="modalBody"></div></div></div>
+  <footer><div><strong>ExamForge</strong><span>Sample concept by Learn With Champak</span></div><p>Demo data only. Scores and activity are stored locally in your browser and can be exported/imported as JSON.</p></footer>
+  <script src="app.js"></script><script src="test-engine.js"></script>
 </body>
 </html>
