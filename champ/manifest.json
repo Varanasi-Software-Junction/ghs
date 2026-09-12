@@ -1,0 +1,11 @@
+{
+  "name":"UP Naukri Guru",
+  "short_name":"Naukri Guru",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f6f8f5",
+  "theme_color":"#145a45",
+  "description":"UP-focused government exam preparation demo for UP Police, UPSSSC PET, Lekhpal, VDO and UP TET.",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
