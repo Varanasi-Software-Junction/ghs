@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#145a45" />
+  <meta name="description" content="UP Naukri Guru — a UP-focused government exam preparation app demo for UP Police, UPSSSC PET, Lekhpal, VDO and UP TET." />
+  <title>UP Naukri Guru | UP Government Exam Preparation</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="UP Naukri Guru home">
+      <span class="brand-mark">UP</span>
+      <span class="brand-copy"><strong>UP Naukri Guru</strong><small>उत्तर प्रदेश परीक्षा तैयारी</small></span>
+    </a>
+    <button id="menuBtn" class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#practice">Practice</a>
+      <a href="#mock">Mock Test</a>
+      <a href="#pyq">Previous Papers</a>
+      <a href="#current">Current Affairs</a>
+      <a href="#dashboard">Dashboard</a>
+    </nav>
+    <button id="installBtn" class="install-btn" type="button" hidden>Install App</button>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">UP-FIRST EXAM PREPARATION</span>
+          <h1>One focused app for Uttar Pradesh government exams.</h1>
+          <p>Choose your exam, practise topic-wise, take timed mock tests, revise previous-year questions and track weak areas — all in one place.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#practice">Start Practice</a>
+            <a class="btn secondary" href="#mock">Take Mock Test</a>
+          </div>
+          <p class="demo-note">Demo build: sample questions and archive entries are for product demonstration only.</p>
+        </div>
+        <aside class="hero-panel" aria-label="MVP overview">
+          <div><strong>5</strong><span>MVP exams</span></div>
+          <div><strong>3</strong><span>Practice modes</span></div>
+          <div><strong>Local</strong><span>Progress saving</span></div>
+          <div><strong>PWA</strong><span>Offline ready</span></div>
+        </aside>
+      </div>
+
+      <section class="exam-picker-card">
+        <div class="section-heading compact">
+          <div><span class="eyebrow">CHOOSE YOUR EXAM</span><h2>Your preparation starts here</h2></div>
+          <span id="selectedExamLabel" class="selected-label">UPSSSC PET selected</span>
+        </div>
+        <div id="examPicker" class="exam-picker" role="group" aria-label="Select exam">
+          <button type="button" data-exam="UP Police"><span>UP</span><strong>Police</strong><small>Constable / SI track</small></button>
+          <button type="button" class="active" data-exam="UPSSSC PET"><span>PET</span><strong>UPSSSC PET</strong><small>Preliminary eligibility</small></button>
+          <button type="button" data-exam="Lekhpal"><span>ले</span><strong>Lekhpal</strong><small>Revenue recruitment</small></button>
+          <button type="button" data-exam="VDO"><span>VDO</span><strong>VDO</strong><small>Village development</small></button>
+          <button type="button" data-exam="UP TET"><span>TET</span><strong>UP TET</strong><small>Teacher eligibility</small></button>
+        </div>
+      </section>
+
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-no">01</span><h3>Topic-wise Practice</h3><p>Short MCQ sets with instant feedback and explanations.</p><a href="#practice">Practise now →</a></article>
+        <article class="feature-card"><span class="feature-no">02</span><h3>Timed Mock Tests</h3><p>Exam-style countdown, navigation and automatic score saving.</p><a href="#mock">Start mock →</a></article>
+        <article class="feature-card"><span class="feature-no">03</span><h3>Previous-year Bank</h3><p>Browse a structured archive by exam, topic and year.</p><a href="#pyq">Browse archive →</a></article>
+        <article class="feature-card"><span class="feature-no">04</span><h3>Current Affairs</h3><p>A dedicated feed area designed for daily UP-focused updates.</p><a href="#current">Open feed →</a></article>
+        <article class="feature-card"><span class="feature-no">05</span><h3>Weak-topic Tracking</h3><p>Your local dashboard identifies topics where accuracy is lowest.</p><a href="#dashboard">View progress →</a></article>
+        <article class="feature-card"><span class="feature-no">06</span><h3>Offline Practice</h3><p>The PWA caches the core interface so revision can continue with weak connectivity.</p><button id="installCardBtn" type="button" class="link-button">Install / use offline →</button></article>
+      </div>
+
+      <section class="today-card">
+        <div>
+          <span class="eyebrow">TODAY'S TARGET</span>
+          <h2>10 focused questions are better than 100 random ones.</h2>
+          <p id="todayTargetText">Continue with UPSSSC PET and aim for at least 80% accuracy.</p>
+        </div>
+        <a class="btn primary" href="#practice">Begin daily practice</a>
+      </section>
+    </section>
+
+    <section id="practice" class="page">
+      <div class="page-title">
+        <div><span class="eyebrow">TOPIC-WISE PRACTICE</span><h1>Practise with instant feedback</h1><p>Choose a topic and answer one question at a time. Each response is saved locally for your dashboard.</p></div>
+        <span id="practiceExamPill" class="pill">UPSSSC PET</span>
+      </div>
+      <div class="practice-layout">
+        <aside class="side-card">
+          <label for="practiceTopic">Topic</label>
+          <select id="practiceTopic"></select>
+          <label for="practiceDifficulty">Difficulty</label>
+          <select id="practiceDifficulty"><option value="">Mixed</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
+          <button id="newPracticeBtn" class="btn primary full" type="button">New Practice Set</button>
+          <div class="mini-stat"><span>Session score</span><strong id="practiceScore">0 / 0</strong></div>
+          <div class="mini-stat"><span>Current streak</span><strong id="practiceStreak">0</strong></div>
+        </aside>
+        <article id="practiceCard" class="question-card"></article>
+      </div>
+    </section>
+
+    <section id="mock" class="page">
+      <div class="page-title">
+        <div><span class="eyebrow">FULL-LENGTH MOCK EXPERIENCE</span><h1>Timed mock test</h1><p>This demo uses a short five-question test. The production version can mirror the duration and structure of each target exam.</p></div>
+        <span id="mockExamPill" class="pill">UPSSSC PET</span>
+      </div>
+      <div class="mock-shell">
+        <aside class="mock-side">
+          <div class="timer-panel"><span>Time remaining</span><strong id="mockTimer">05:00</strong></div>
+          <div class="mock-stat"><span>Answered</span><strong id="mockAnswered">0 / 5</strong></div>
+          <div id="mockNavigator" class="mock-navigator" aria-label="Question navigator"></div>
+          <button id="startMockBtn" class="btn primary full" type="button">Start New Mock</button>
+          <button id="submitMockBtn" class="btn secondary full" type="button" disabled>Submit Mock</button>
+        </aside>
+        <article id="mockCard" class="question-card mock-card"></article>
+      </div>
+    </section>
+
+    <section id="pyq" class="page">
+      <div class="page-title">
+        <div><span class="eyebrow">PREVIOUS-YEAR QUESTION BANK</span><h1>Structured archive</h1><p>Filter papers by exam, year and topic. These demo entries show the intended archive experience; official papers would be added through the verified content pipeline.</p></div>
+      </div>
+      <div class="toolbar">
+        <select id="pyqExam"><option value="">All exams</option></select>
+        <select id="pyqYear"><option value="">All years</option></select>
+        <input id="pyqSearch" type="search" placeholder="Search topic, paper or year" />
+      </div>
+      <div id="pyqList" class="paper-list"></div>
+    </section>
+
+    <section id="current" class="page">
+      <div class="page-title">
+        <div><span class="eyebrow">DAILY CURRENT AFFAIRS</span><h1>Current affairs feed</h1><p>The stakeholder brief specifies a daily feed. This demo shows the layout without presenting fabricated live news.</p></div>
+        <span class="pill">Demo feed</span>
+      </div>
+      <div class="current-grid">
+        <article class="current-feature">
+          <span class="status-chip">Production plan</span>
+          <h2>Verified daily updates, not copied noise</h2>
+          <p>In production, current-affairs items should be sourced from verified government and credible news sources, tagged by exam relevance, and reviewed before appearing here.</p>
+          <div class="tag-row"><span>UP relevance</span><span>Exam tag</span><span>Save for revision</span><span>Daily quiz</span></div>
+        </article>
+        <aside class="current-side">
+          <h3>Planned daily flow</h3>
+          <ol>
+            <li><strong>Discover</strong><span>Collect verified updates.</span></li>
+            <li><strong>Structure</strong><span>Create concise exam-oriented notes.</span></li>
+            <li><strong>Review</strong><span>Human check uncertain items.</span></li>
+            <li><strong>Revise</strong><span>Turn saved items into quiz questions.</span></li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="dashboard" class="page">
+      <div class="page-title">
+        <div><span class="eyebrow">PERFORMANCE DASHBOARD</span><h1>Your preparation at a glance</h1><p>Practice and mock-test activity is stored in this browser. No account is required for this demo.</p></div>
+        <button id="resetProgressBtn" class="btn secondary" type="button">Reset demo progress</button>
+      </div>
+      <div id="dashboardStats" class="stats-grid"></div>
+      <div class="dashboard-grid">
+        <section class="dashboard-card"><div class="card-head"><h2>Topic performance</h2><span>Local data</span></div><div id="topicPerformance"></div></section>
+        <section class="dashboard-card"><div class="card-head"><h2>Recent activity</h2><span id="activityCount">0 entries</span></div><div id="recentActivity"></div></section>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div><strong>UP Naukri Guru</strong><span>UP-focused government exam preparation — product demo</span></div>
+    <p>Sample questions and archive entries are for demonstration. Production content should be verified before publication.</p>
+  </footer>
+
+  <script src="app.js?v=1"></script>
+</body>
+</html>
